@@ -50,7 +50,7 @@ public class ApiRestService {
 	}
 
 	@GET
-	@Path("/reviewByReviewID/{uid}")
+	@Path("/reviewByReviewID/{rid}")
 	public Response getReviewByReviewId(@PathParam("rid") int rid) {
 		TestReview review = new TestReview();
 		review.setSellerId(RandomDataGenerator.generateRandomNumber(1000));
