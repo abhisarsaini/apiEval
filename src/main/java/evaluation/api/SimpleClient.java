@@ -62,7 +62,7 @@ public class SimpleClient {
 					+ ","
 					+ ran.nextInt(10)
 					+ ","
-					+ "'This is a very good product"
+					+ "'This is a very good product. "
 					+ i
 					+ "'"
 					+ ","
