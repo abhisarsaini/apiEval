@@ -47,22 +47,22 @@ public class SimpleClient {
 		connect("127.0.0.1");
 		session = cluster.connect();
 
-		session.execute("CREATE KEYSPACE revrat WITH replication "
+		session.execute("CREATE KEYSPACE rrating WITH replication "
 				+ "= {'class':'SimpleStrategy', 'replication_factor':3};");
 
-		session.execute("CREATE TABLE revrat.reviews (" + "id uuid,"
+		session.execute("CREATE TABLE rrating.reviews (" + "id uuid,"
 				+ "sellerid int," + "productid int," + "review text,"
 				+ "rating int," + "PRIMARY KEY(sellerid, productid)," + ");");
 
 		for (int i = 1; i < 10000; i++) {
-			session.execute("INSERT INTO revrat.reviews (sellerid, productid, review, rating) "
+			session.execute("INSERT INTO rrating.reviews (sellerid, productid, review, rating) "
 					+ "VALUES ("
 
-					+ ran.nextInt(100)
+					+ ran.nextInt(101)
 					+ ","
-					+ ran.nextInt(1000)
+					+ ran.nextInt(10)
 					+ ","
-					+ "'This ia very good product"
+					+ "'This is a very good product"
 					+ i
 					+ "'"
 					+ ","
@@ -76,7 +76,7 @@ public class SimpleClient {
 		session = cluster.connect();
 		String title = "";
 
-		ResultSet results = session.execute("SELECT * FROM revrat.reviews "
+		ResultSet results = session.execute("SELECT * FROM rrating.reviews "
 				+ "WHERE sellerid = " + sid + ";");
 		for (Row row : results) {
 
@@ -86,6 +86,7 @@ public class SimpleClient {
 		return title;
 	}
 
+	
 	public static void main(String[] args) {
 
 	}

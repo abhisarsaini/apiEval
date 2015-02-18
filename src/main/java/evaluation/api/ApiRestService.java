@@ -1,5 +1,7 @@
 package evaluation.api;
 
+import java.net.UnknownHostException;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -30,4 +32,13 @@ public class ApiRestService {
 		SimpleClient.loadData();
 		return Response.status(Response.Status.OK).entity("Loaded").build();
 	}
+	
+	@PUT					
+	@Path("/loadsellers")
+	public Response loadSellers() throws UnknownHostException {
+		SellerMisc.loadSellers();
+		return Response.status(Response.Status.OK).entity("Sellers loaded").build();
+	}
+	
+	
 }
